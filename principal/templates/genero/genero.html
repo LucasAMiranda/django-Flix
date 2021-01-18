@@ -30,7 +30,7 @@
    			<tr>
    					<td>{{genero.descricao}}</td>
    					<td><button class="list-button editar-button">Alterar</button></td>
-   					<td><button class="list-button apagar-button">Excluir</button></td>
+   					<td><button class="list-button apagar-button" onclick="deleteItem({{genero.id}})">Excluir</button></td>
 
    			</tr>
    			{%endfor%}
@@ -53,6 +53,26 @@
     </div>
 
    </main>
+
+   <script type="text/javascript">
+   	
+   	 function deleteItem(id) {
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        const request = new Request(
+        "/genero/delete/"+id,
+        {headers: {'X-CSRFToken': csrftoken}}
+        );
+        fetch(request, {
+            method: 'DELETE',
+            mode: 'same-origin'
+        }).then(function(response) {
+            location.replace("/genero")
+           //alert("Informação apagada com sucesso");
+        });
+    }
+
+
+   </script>
 
 </body>
 </html>
