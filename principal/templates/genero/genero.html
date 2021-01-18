@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>IGTIFlix</title>
+	<link href= "{% static 'css/menu.css' %}" rel="stylesheet" type="text/css">
+	<link href= "{% static 'css/genero.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+   
+   {% include "../menu.html" %}
+
+   <main>
+
+   	<div class="container-center">
+   		<span>
+   			{% if genero_records%}
+   		<table>
+   			<thead>
+   				<tr>
+   					<th>Gênero</th>
+   					<th>Clique para alterar</th>
+   					<th>Clique para excluir</th>
+   				</tr>
+   			</thead>
+
+   			<tbody>
+   			{% for genero in genero_records%}
+   			<tr>
+   					<td>{{genero.descricao}}</td>
+   					<td><button class="list-button editar-button">Alterar</button></td>
+   					<td><button class="list-button apagar-button">Excluir</button></td>
+
+   			</tr>
+   			{%endfor%}
+   			</tbody>
+   		</table>
+   		{% else %}
+   			<p>Nenhum dado cadastrado</p>
+   		{% endif %}
+   	 </span>
+   </div>
+      
+    <div class="container-center">  
+	     	<form onsubmit="/genero" id="form-genero" method="post">
+	     		{{form}}
+
+	     		{% csrf_token %}
+	     		<input type="submit" id="submit-button" class="submit-button" value="Enviar"/>
+     	   </form>
+        </div>
+    </div>
+
+   </main>
+
+</body>
+</html>
