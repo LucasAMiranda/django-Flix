@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-Br">
+<head>
+	<title>IGTIFlix</title>
+	<meta charset="UTF-8" />
+	 <link href="{% static 'css/reset.css' %}" rel="stylesheet" type="text/css">
+     <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css">
+     <link href="{% static 'css/genero.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+	{% include "../menu.html"%}
+	<main>
+		<div class="container-center">
+			<form onsubmit="/genero" id="form-genero" method="POST">
+
+				{{form}}
+				{%csrf_token%}
+				<input type="submit" id="submit-button" value="Enviar" class="enviar-button">
+
+			</form>
+		</div>
+
+   </main>
+</body>
+</html>

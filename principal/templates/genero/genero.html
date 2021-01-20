@@ -29,7 +29,7 @@
    			{% for genero in genero_records%}
    			<tr>
    					<td>{{genero.descricao}}</td>
-   					<td><button class="list-button editar-button">Alterar</button></td>
+   					<td><button class="list-button editar-button" onclick="updateItem({{genero.id}})">Alterar</button></td>
    					<td><button class="list-button apagar-button" onclick="deleteItem({{genero.id}})">Excluir</button></td>
 
    			</tr>
@@ -71,7 +71,9 @@
         });
     }
 
-
+    function updateItem(id){
+    	location.replace("/genero/update/"+id)
+    }
    </script>
 
 </body>
